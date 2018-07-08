@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Tee
 Version  : 0.65
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-tee-perl/libio-tee-perl_0.65-1.debian.tar.xz
@@ -66,6 +66,7 @@ make TEST_VERBOSE=1 test
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/doc/perl-IO-Tee
 cp LICENSE %{buildroot}/usr/share/doc/perl-IO-Tee/LICENSE
+cp deblicense/copyright %{buildroot}/usr/share/doc/perl-IO-Tee/deblicense_copyright
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot}
 else
@@ -83,6 +84,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files license
 %defattr(-,root,root,-)
 /usr/share/doc/perl-IO-Tee/LICENSE
+/usr/share/doc/perl-IO-Tee/deblicense_copyright
 
 %files man
 %defattr(-,root,root,-)
