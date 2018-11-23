@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Tee
 Version  : 0.65
-Release  : 3
+Release  : 4
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-tee-perl/libio-tee-perl_0.65-1.debian.tar.xz
@@ -80,7 +80,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/IO/Tee.pm
+/usr/lib/perl5/vendor_perl/5.28.0/IO/Tee.pm
 
 %files dev
 %defattr(-,root,root,-)
