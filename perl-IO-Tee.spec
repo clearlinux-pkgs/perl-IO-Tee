@@ -4,11 +4,11 @@
 #
 Name     : perl-IO-Tee
 Version  : 0.65
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-tee-perl/libio-tee-perl_0.65-1.debian.tar.xz
-Summary  : 'Multiplex output to multiple output handles'
+Summary  : Perl/CPAN Module IO::Tee : Multiplex output to multiple handles
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-IO-Tee-license = %{version}-%{release}
@@ -23,6 +23,7 @@ to multiple file handles.
 Summary: dev components for the perl-IO-Tee package.
 Group: Development
 Provides: perl-IO-Tee-devel = %{version}-%{release}
+Requires: perl-IO-Tee = %{version}-%{release}
 
 %description dev
 dev components for the perl-IO-Tee package.
@@ -41,7 +42,7 @@ license components for the perl-IO-Tee package.
 cd ..
 %setup -q -T -D -n IO-Tee-0.65 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/IO-Tee-0.65/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/IO-Tee-0.65/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
