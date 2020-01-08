@@ -4,14 +4,15 @@
 #
 Name     : perl-IO-Tee
 Version  : 0.65
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-tee-perl/libio-tee-perl_0.65-1.debian.tar.xz
-Summary  : Perl/CPAN Module IO::Tee : Multiplex output to multiple handles
+Summary  : 'Multiplex output to multiple output handles'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-IO-Tee-license = %{version}-%{release}
+Requires: perl-IO-Tee-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -37,18 +38,28 @@ Group: Default
 license components for the perl-IO-Tee package.
 
 
+%package perl
+Summary: perl components for the perl-IO-Tee package.
+Group: Default
+Requires: perl-IO-Tee = %{version}-%{release}
+
+%description perl
+perl components for the perl-IO-Tee package.
+
+
 %prep
 %setup -q -n IO-Tee-0.65
-cd ..
-%setup -q -T -D -n IO-Tee-0.65 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/libio-tee-perl_0.65-1.debian.tar.xz
+cd %{_builddir}/IO-Tee-0.65
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/IO-Tee-0.65/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/IO-Tee-0.65/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -58,7 +69,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -67,8 +78,8 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-Tee
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-Tee/LICENSE
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Tee/deblicense_copyright
+cp %{_builddir}/IO-Tee-0.65/LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-Tee/943d005049c7cef6b1c9f0a1ba3e880ccee12abb
+cp %{_builddir}/IO-Tee-0.65/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Tee/971799ba6d9df1bad73c9d4d42abd781a891f1f6
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,7 +92,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/IO/Tee.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -89,5 +99,9 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-IO-Tee/LICENSE
-/usr/share/package-licenses/perl-IO-Tee/deblicense_copyright
+/usr/share/package-licenses/perl-IO-Tee/943d005049c7cef6b1c9f0a1ba3e880ccee12abb
+/usr/share/package-licenses/perl-IO-Tee/971799ba6d9df1bad73c9d4d42abd781a891f1f6
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/IO/Tee.pm
