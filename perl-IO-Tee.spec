@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Tee
 Version  : 0.65
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.65.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-tee-perl/libio-tee-perl_0.65-1.debian.tar.xz
@@ -79,7 +79,7 @@ make TEST_VERBOSE=1 test
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-IO-Tee
 cp %{_builddir}/IO-Tee-0.65/LICENSE %{buildroot}/usr/share/package-licenses/perl-IO-Tee/943d005049c7cef6b1c9f0a1ba3e880ccee12abb
-cp %{_builddir}/IO-Tee-0.65/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Tee/971799ba6d9df1bad73c9d4d42abd781a891f1f6
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-IO-Tee/971799ba6d9df1bad73c9d4d42abd781a891f1f6
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -104,4 +104,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/IO/Tee.pm
+/usr/lib/perl5/vendor_perl/5.30.2/IO/Tee.pm
