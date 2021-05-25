@@ -4,7 +4,7 @@
 #
 Name     : perl-IO-Tee
 Version  : 0.66
-Release  : 22
+Release  : 23
 URL      : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.66.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/N/NE/NEILB/IO-Tee-0.66.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libi/libio-tee-perl/libio-tee-perl_0.65-1.debian.tar.xz
